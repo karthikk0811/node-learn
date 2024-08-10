@@ -1,6 +1,7 @@
 const express = require('express');
 const path=require('path');
 const mongoose=require('mongoose');
+require('dotenv').config();
 const cookieParser=require('cookie-parser');
 const {restrictToLoggedinUserOnly}=require('./middlewares/auth');
 
@@ -11,9 +12,10 @@ const patronRoute=require('./routes/patron');
 
 const app=express();
 const PORT=8000;
+const mongoUrl=process.env.MONGOURL;
 
 
-mongoose.connect("mongodb+srv://saikarthik2002:karthik0808@cluster0.sv6pjl0.mongodb.net/node-learn").
+mongoose.connect(MONGOURL).
 then(()=>console.log("mongodb connected"))
 .catch((err)=>console.error(err));
 
